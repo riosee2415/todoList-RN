@@ -36,7 +36,7 @@ export default class App extends React.Component {
             autoCorrect={false}
           />
           <ScrollView contentContainerStyle={styles.toDos}>
-            <ToDo />
+            <ToDo text={"Hello To do"} />
           </ScrollView>
         </View>
       </LinearGradient>
