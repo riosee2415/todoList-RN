@@ -6,22 +6,48 @@ import {
   StatusBar,
   TextInput,
   Dimensions,
-  Platform
+  Platform,
+  ScrollView
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
+import ToDo from "./ToDo";
 
 const { height, width } = Dimensions.get("window");
 
-export default function App() {
-  return (
-    <LinearGradient colors={["#E4E5E6", "#00416A"]} style={styles.container}>
-      <StatusBar barStyle="dark-content" />
-      <Text style={styles.title}>RN To Do</Text>
-      <View style={styles.card}>
-        <TextInput style={styles.input} placeholder={"New To Do.."} />
-      </View>
-    </LinearGradient>
-  );
+export default class App extends React.Component {
+  state = {
+    newToDo: ""
+  };
+
+  render() {
+    const { newToDo } = this.state;
+    return (
+      <LinearGradient colors={["#E4E5E6", "#00416A"]} style={styles.container}>
+        <StatusBar barStyle="dark-content" />
+        <Text style={styles.title}>RN To Do</Text>
+        <View style={styles.card}>
+          <TextInput
+            style={styles.input}
+            placeholder={"New To Do.."}
+            value={newToDo}
+            onChangeText={this._controllNewToDo}
+            placeholderTextColor={"#999"}
+            returnKeyType={"done"}
+            autoCorrect={false}
+          />
+          <ScrollView>
+            <ToDo />
+          </ScrollView>
+        </View>
+      </LinearGradient>
+    );
+  }
+
+  _controllNewToDo = text => {
+    this.setState({
+      newToDo: text
+    });
+  };
 }
 
 const styles = StyleSheet.create({
@@ -57,5 +83,11 @@ const styles = StyleSheet.create({
         elevation: 3
       }
     })
+  },
+  input: {
+    padding: 20,
+    borderBottomColor: "#bbb",
+    borderBottomWidth: 1,
+    fontSize: 22
   }
 });
