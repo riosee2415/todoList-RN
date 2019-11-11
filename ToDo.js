@@ -121,9 +121,9 @@ const styles = StyleSheet.create({
     justifyContent: "space-between"
   },
   circle: {
-    width: 35,
-    height: 35,
-    borderRadius: 25,
+    width: 30,
+    height: 30,
+    borderRadius: 15,
     borderWidth: 3,
     marginRight: 20
   },
@@ -136,7 +136,7 @@ const styles = StyleSheet.create({
   text: {
     fontWeight: "600",
     fontSize: 22,
-    marginVertical: 20
+    marginVertical: 15
   },
   completedText: {
     color: "#bbb",
@@ -158,7 +158,8 @@ const styles = StyleSheet.create({
     marginHorizontal: 10
   },
   input: {
-    marginVertical: 20,
-    width: width / 2
+    width: width / 2,
+    marginVertical: 15,
+    paddingBottom: 5
   }
 });
